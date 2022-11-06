@@ -1,0 +1,26 @@
+<div class="">
+  <div class="" *ngFor="let item of posts">
+    <div class="post-preview">
+      <a [routerLink]="['/posts', item?.id]">
+        <h2 class="post-title">{{ item?.title }}</h2>
+        <h3 class="post-subtitle">{{ item?.shortDescription }}</h3>
+      </a>
+      <p class="post-meta">
+        Posted {{ item?.postedOn }} with rate {{ item?.totalRate }} by
+        {{ item?.viewCount }} view(s)
+      </p>
+      <p>
+        Category: <a asp-controller="Category">{{ item?.categoryName }}</a>
+      </p>
+      <div class="d-flex flex-row">
+        <div class="p-2">Tag:</div>
+        <div class="" *ngFor="let tag of item.tags">
+          <div class="p-2 bg-dark ms-2">
+            <a class="text-white">{{ tag }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="my-4" />
+  </div>
+</div>

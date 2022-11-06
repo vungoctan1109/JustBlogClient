@@ -1,0 +1,157 @@
+<!-- <div class="">
+  <div class="register-photo d-flex align-items-center" style="height: 100vh">
+    <div class="form-container">
+      <div class="image-holder"></div>
+      <form
+        method="post"
+        #loginForm="ngForm"
+        (ngSubmit)="userLogin(loginForm)"
+      >
+        <h2 class="text-center"><strong>Login</strong></h2>
+        <div style="position: relative;" class="form-group py-1">
+          <input
+            class="form-control"
+            type="email"
+            required
+            minlength="4"
+            name="userName"
+            pattern="^\S+@\S+\.\S+$"
+            placeholder="UserName"
+            #name="ngModel"
+            ngModel
+          />
+          <div
+            style="font-size: 12px; position: absolute;color: red;"
+            *ngIf="name.invalid && (name.dirty || name.touched)"
+          >
+            <div *ngIf="name.errors?.['required']">Name is required.</div>
+            <div *ngIf="name.errors?.['minlength']">
+              Name must be at least 4 characters long.
+            </div>
+            <div *ngIf="name.errors?.['pattern']">
+              Email incorrect
+            </div>
+          </div>
+        </div>
+        <div class="form-group" style="position:relative;">
+          <input
+            class="form-control"
+            type="password"
+            required
+            minlength="4"
+            name="password"
+            placeholder="Password"
+            ngModel
+          />
+        </div>
+
+        <div class="form-group">
+          <button class="btn btn-primary btn-block" type="submit">
+            Sign Up
+          </button>
+        </div>
+        <a href="#" class="already"
+          >You already have an account? Register here.</a
+        >
+      </form>
+    </div>
+  </div>
+</div> -->
+
+<!-- Form-->
+<div class="form">
+  <div class="form-toggle"></div>
+  <div class="form-panel one">
+    <div class="form-header">
+      <h1>Account Login</h1>
+    </div>
+    <div class="form-content">
+      <form method="post"
+        #loginForm="ngForm"
+        (ngSubmit)="userLogin(loginForm)">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="email"
+            required
+            minlength="4"
+            name="userName"
+            pattern="^\S+@\S+\.\S+$"
+            #name="ngModel"
+            ngModel/>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password"
+            required
+            minlength="4"
+            name="password"
+            ngModel/>
+        </div>
+        <div class="form-group">
+          <label class="form-remember">
+            <input type="checkbox"/>Remember Me
+          </label><a class="form-recovery" href="#">Forgot Password?</a>
+        </div>
+        <div class="form-group">
+          <button type="submit">Log In</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="form-panel two">
+    <div class="form-header">
+      <h1>Register Account</h1>
+    </div>
+    <div class="form-content">
+      <form>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input id="username" type="text" name="username" required="required"/>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input id="password" type="password" name="password" required="required"/>
+        </div>
+        <div class="form-group">
+          <label for="cpassword">Confirm Password</label>
+          <input id="cpassword" type="password" name="cpassword" required="required"/>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input id="email" type="email" name="email" required="required"/>
+        </div>
+        <div class="form-group">
+          <button type="submit">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+  var panelOne = $('.form-panel.two').height(),
+    panelTwo = $('.form-panel.two')[0].scrollHeight;
+
+  $('.form-panel.two').not('.form-panel.two.active').on('click', function(e) {
+    e.preventDefault();
+
+    $('.form-toggle').addClass('visible');
+    $('.form-panel.one').addClass('hidden');
+    $('.form-panel.two').addClass('active');
+    $('.form').animate({
+      'height': panelTwo
+    }, 200);
+  });
+
+  $('.form-toggle').on('click', function(e) {
+    e.preventDefault();
+    $(this).removeClass('visible');
+    $('.form-panel.one').removeClass('hidden');
+    $('.form-panel.two').removeClass('active');
+    $('.form').animate({
+      'height': panelOne
+    }, 200);
+  });
+});
+</script>

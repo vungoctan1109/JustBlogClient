@@ -1,0 +1,21 @@
+<div class="">
+  <div class="card text-center">
+    <div class="card-header">
+      {{ post.title }}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{ post.shortDescription }}</h5>
+      <p class="card-text">{{ post.content }}</p>
+      <div style="font-size: 16px" class="d-flex justify-content-between">
+        <p><span>Total Rate:</span>{{ post.totalRate }}</p>
+        <p><span> Rate:</span>{{ post.rate }}</p>
+        <p><span>Rate Count:</span>{{ post.rateCount }}</p>
+        <p><span>View Count:</span>{{ post.viewCount }}</p>
+      </div>
+    </div>
+    <div class="card-footer text-muted">
+      <span>Last Modify:</span>
+      {{ post.modified | date }}
+    </div>
+  </div>
+</div>
